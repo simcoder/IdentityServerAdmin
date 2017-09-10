@@ -1,4 +1,6 @@
-# IdentityServerAdmin UI Tool
+## Scope
+the scope of this is to help put up a solid UI Admin tool for IdentityServer4
+
 
 ## Instruction for debugging
 1) Clone this repo
@@ -8,12 +10,9 @@
 5) Log out
 
 
-## Scope
-the scope of this is to help put up a solid UI Admin tool for IdentityServer4
-
 ## whats already done?
 1) Persistent Storage for users
-s) Persistent Storage for clients
+2) Persistent Storage for clients
 3) Persistent Storage for resources
 4) Default superadmin user creation out of the box 
 5) Basic Authentication and Authorization 
