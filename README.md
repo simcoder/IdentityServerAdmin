@@ -20,12 +20,12 @@ s) Persistent Storage for clients
 6)Template for the Admin tool
 
 ## Whats needed?
- 1)UI for User Management Page
- 2)UI for Clients Management Page
- 3)Service for User Management Page
- 4)Service for Client Management Page
- 5)Unit Tests for everything
- 6)More to come
+1) UI for User Management Page
+2) UI for Clients Management Page
+3) Service for User Management Page
+4) Service for Client Management Page
+5) Unit Tests for everything
+6) More to come
 
 ## If you are contributing please follow the following instructions
 1) clone project
