@@ -1,11 +1,11 @@
 # IdentityServerAdmin UI Tool
 
 ## Instruction for debugging
-1) clone this repo
-2) go to the appsetting.json file and add the connection strings of Dbs you will be testing with
-3) run project
-4) login username: superadmin password: Test123!
-5) log out
+1) Clone this repo
+2) Go to the appsetting.json file and add the connection strings of Dbs you will be testing with
+3) Run project
+4) Login username: superadmin password: Test123!
+5) Log out
 
 
 ## Scope
@@ -15,9 +15,9 @@ the scope of this is to help put up a solid UI Admin tool for IdentityServer4
 1) Persistent Storage for users
 s) Persistent Storage for clients
 3) Persistent Storage for resources
-4)default superadmin user creation out of the box 
-5)Basic Authentication and Authorization 
-6)Template for the Admin tool
+4) Default superadmin user creation out of the box 
+5) Basic Authentication and Authorization 
+6) Template for the Admin tool
 
 ## Whats needed?
 1) UI for User Management Page
@@ -28,6 +28,7 @@ s) Persistent Storage for clients
 6) More to come
 
 ## If you are contributing please follow the following instructions
-1) clone project
-2) create branch
-3) name your branch with a meninful name for example UserManagementPageWorkUI or UserManagementPageServices
+1) Clone project
+2) Create branch
+3) Name your branch with a meninful name for example UserManagementPageWorkUI or UserManagementPageServices
+4) Create pull request
