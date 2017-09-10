@@ -1,5 +1,5 @@
 ## Scope
-the scope of this is to help put up a solid UI Admin tool for IdentityServer4
+The scope of this is to help put up a solid UI Admin tool for IdentityServer4
 
 
 ## Instruction for debugging
