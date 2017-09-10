@@ -19,11 +19,17 @@ namespace IdentityServerAdmin.Controllers
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
-
+                return RedirectToAction("Login", "Account");
             }
-            return View();
+            if (User.Identity.IsAuthenticated && User.Identity.Name == "superadmin")
+            {
+                return View();
+            }
+            // if we get here  a non superadmin authenticated user has attempted to go to admin tool
+            //TODO implement this scenario
+            return null;
         }
 
 

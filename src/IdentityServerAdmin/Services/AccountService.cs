@@ -90,6 +90,20 @@ namespace IdentityServerAdmin.Services
             };
         }
 
+        public async Task<RegisterViewModel> BuildRegisterViewModelAsync(string returnUrl)
+        {
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+
+            if (context?.ClientId != null)
+            {
+                return new RegisterViewModel
+                {
+                    ClientId = context.ClientId
+                };
+            }
+            return new RegisterViewModel();
+        }
+
         public async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
             var vm = await BuildLoginViewModelAsync(model.ReturnUrl);

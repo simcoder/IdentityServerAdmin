@@ -9,7 +9,7 @@ namespace IdentityServerAdmin.Models.AccountViewModels
     public class RegisterViewModel
     {
         [EmailAddress]
-        [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
@@ -26,5 +26,16 @@ namespace IdentityServerAdmin.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        public string ClientId { get; set; }
+
     }
 }

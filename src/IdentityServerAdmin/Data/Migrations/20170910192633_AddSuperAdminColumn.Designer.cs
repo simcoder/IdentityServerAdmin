@@ -8,9 +8,10 @@ using IdentityServerAdmin.Data;
 namespace IdentityServerAdmin.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170910192633_AddSuperAdminColumn")]
+    partial class AddSuperAdminColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -26,20 +27,12 @@ namespace IdentityServerAdmin.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("DomainOwner");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FirstName");
-
                     b.Property<bool>("IsSuperAdmin");
-
-                    b.Property<bool>("IsTempPassword");
-
-                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 

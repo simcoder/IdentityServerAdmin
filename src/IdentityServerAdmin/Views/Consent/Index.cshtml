@@ -1,7 +1,9 @@
 @using System.Linq
 @using Microsoft.AspNetCore.Mvc.Rendering
 @model IdentityServerAdmin.Models.ConsentViewModels.ConsentViewModel
-
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
 <div class="page-consent">
     <div class="row page-header">
         <div class="col-sm-10">

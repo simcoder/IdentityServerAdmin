@@ -1,103 +1,103 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityServerAdmin.Data;
 using IdentityServerAdmin.Dtos;
+using IdentityServerAdmin.Dtos.Enums;
 using IdentityServerAdmin.Interfaces;
 using IdentityServerAdmin.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServerAdmin.Services
 {
-    public class UserService: IUserService
+    /// <summary>
+    ///     this class manages application user
+    /// </summary>
+    public class UserService : IUserService
     {
-        private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-       
+
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="context"></param>
         /// <param name="userManager">Identity Server</param>
-        public UserService(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public UserService(UserManager<ApplicationUser> userManager)
         {
-            _context = context;
             _userManager = userManager;
-            
         }
-        public Task<UserDto> FindByUsernameAsync(string username)
+
+        public async Task<UserDto> FindByUsernameAsync(string username)
         {
-            
-                try
-                {
-                    ApplicationUser result = _context.Users
-                        .SingleOrDefault(x => x.UserName == username);
-                    var user = new UserDto()
-                    {
-                        SubjectId = result.Id,
-                        Password = result.PasswordHash,
-                        Username = result.UserName,
-                        LockoutEnabled = result.LockoutEnabled,
-                        LockoutEnd = result.LockoutEnd
+            var userEntity = await _userManager.FindByNameAsync(username);
 
-                    };
-                    return Task.FromResult(user);
-                }
-                catch (Exception ex)
-                {
-                    
-                }
+            var mappedUser = new UserDto
+            {
+                SubjectId = userEntity.Id,
+                Username = userEntity.UserName,
+                Password = userEntity.PasswordHash,
+                LockoutEnabled = userEntity.LockoutEnabled,
+                LockoutEnd = userEntity.LockoutEnd,
+                IsSuperAdmin = userEntity.IsSuperAdmin
+            };
 
- 
-
-            return null;
+            return mappedUser;
         }
+
+       
 
         public async Task<bool> CheckPasswordAsync(UserDto user, string password)
         {
-            var userEntity = _context.Users.SingleOrDefault(x => x.UserName == user.Username);
+            var userEntity = await _userManager.FindByNameAsync(user.Username);
 
             return await _userManager.CheckPasswordAsync(userEntity, password);
         }
 
-        public async Task<bool> CreateUserAsync(UserDto user)
-        {
-            IdentityResult result = await _userManager.CreateAsync(new ApplicationUser {UserName = user.Username}, user.Password);
-            ApplicationUser appUser = await _userManager.FindByNameAsync(user.Username);
 
-            await _userManager.AddClaimAsync(appUser, new Claim("name", user.Username));
-            return result.Succeeded;
+        public async Task<bool> CreateUserAsync(CreateUserDto user)
+        {
+            IdentityResult addUserResult =
+                await _userManager.CreateAsync(
+                    new ApplicationUser
+                    {
+                        UserName = user.Username,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        IsTempPassword = user.IsTempPassword,
+                        Email = user.Email,
+                        DomainOwner = user.DomainOwner
+                    }, user.Password);
+
+            var appUser = await _userManager.FindByNameAsync(user.Username);
+
+            //add default role
+            var addUserRoleResult = await _userManager.AddToRoleAsync(appUser, "ApplicationUser");
+
+            if (addUserResult.Succeeded && addUserRoleResult.Succeeded)
+            {
+                //add default claims
+                await _userManager.AddClaimAsync(appUser, new Claim("name", user.Username));
+
+                await _userManager.AddClaimAsync(appUser, new Claim(ClaimTypes.Role, "ApplicationUser"));
+
+                return true;
+            }
+
+            return false;
         }
 
-        public Task<List<Claim>> GetClaimsAsync(UserDto user)
+        public async Task<List<Claim>> GetClaimsAsync(UserDto user)
         {
-            using (var ctx = _context)
-            {
-                var result = ctx.Users
-                    .Where(x => x.UserName == user.Username).Include("Claims").SingleOrDefault();
-                var result2 = result.Claims.AsQueryable();
-                var fr = new List<Claim>();
-                foreach (IdentityUserClaim<string> claim in result2)
-                {
-                   
-                   fr.Add(new Claim(claim.ClaimType,claim.ClaimValue));
-                }
-                return Task.FromResult(fr);
-            }
+            var users = await _userManager.FindByNameAsync(user.Username);
+
+            var result = await _userManager.GetClaimsAsync(users);
+
+            return result.ToList();
         }
 
         public async Task<bool> ValidateUsernameAndPassword(string modelUsername, string modelPassword)
         {
-            UserDto user = await FindByUsernameAsync(modelUsername);
+            var user = await FindByUsernameAsync(modelUsername);
 
             return await CheckPasswordAsync(user, modelPassword);
         }
-
     }
-
-   
 }

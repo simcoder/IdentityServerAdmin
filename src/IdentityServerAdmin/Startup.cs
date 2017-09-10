@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -93,9 +94,9 @@ namespace IdentityServerAdmin
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<ApplicationUser> userManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            InitializeDatabase(app, userManager);
+            InitializeDatabase(app, userManager,roleManager);
             InitializeContainer(app, userManager);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -142,7 +143,7 @@ namespace IdentityServerAdmin
             }
 
         }
-        private async void InitializeDatabase(IApplicationBuilder app, UserManager<ApplicationUser> userManager)
+        private async void InitializeDatabase(IApplicationBuilder app, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -186,8 +187,22 @@ namespace IdentityServerAdmin
                 //this will populate default superadmin user.
                 if (!authenticationContext.Users.Any())
                 {
+                    //TODO Add this to a message broker or separate service with retry policies so if error occurs while creating initila use application can still continue
                     UserDto superAdmin = InitialConfig.GetUsers().First();
-                    await userManager.CreateAsync(new ApplicationUser { UserName = superAdmin.Username }, superAdmin.Password);
+
+                    await userManager.CreateAsync(
+                        new ApplicationUser { UserName = superAdmin.Username, IsSuperAdmin = true },
+                        superAdmin.Password);
+
+                }
+                if (!authenticationContext.Roles.Any())
+                {
+                    IEnumerable<RoleDto> roles = InitialConfig.GetRoles();
+                    foreach (RoleDto roleDto in roles)
+                    {
+                        await roleManager.CreateAsync(
+                            new IdentityRole { Name = roleDto.Name, NormalizedName = roleDto.Name.ToUpper() });
+                    }
                 }
             }
         }

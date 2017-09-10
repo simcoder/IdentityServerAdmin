@@ -48,7 +48,8 @@ namespace IdentityServerAdmin.Controllers
         [HttpGet]
         public async Task<IActionResult> Register(string returnUrl)
         {
-            return View();
+            var vm = await _account.BuildRegisterViewModelAsync(returnUrl);
+            return View(vm);
         }
 
         /// <summary>
@@ -59,23 +60,26 @@ namespace IdentityServerAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userDto = new UserDto
+                var createUserDto = new CreateUserDto()
                 {
                     Username = model.UserName,
-                    Password = model.Password
+                    Password = model.Password,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    DomainOwner = model.ClientId
                 };
-                bool success = await _userService.CreateUserAsync(userDto);
-                UserDto createdUser = await _userService.FindByUsernameAsync(userDto.Username);
+                bool success = await _userService.CreateUserAsync(createUserDto);
+                UserDto createdUser = await _userService.FindByUsernameAsync(createUserDto.Username);
                 createdUser.Claims = await _userService.GetClaimsAsync(createdUser);
                 if (success)
                 {
-
-                    await HttpContext.Authentication.SignInAsync(createdUser.SubjectId, createdUser.Username);
-                    if (returnUrl == null)
+                    if (returnUrl != null)
                     {
-                        return RedirectToAction("Index", "Home");
+                        await HttpContext.Authentication.SignInAsync(createdUser.SubjectId, createdUser.Username);
+                        return Redirect(returnUrl);
                     }
-                    return Redirect(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             return null;
@@ -124,7 +128,8 @@ namespace IdentityServerAdmin.Controllers
 
                     // issue authentication cookie with subject ID and username
                     UserDto user = await _userService.FindByUsernameAsync(model.Username);
-                    user.Claims = await _userService.GetClaimsAsync(user);
+                    if (!user.IsSuperAdmin)
+                        user.Claims = await _userService.GetClaimsAsync(user);
 
 
                     await HttpContext.Authentication.SignInAsync(user.SubjectId, user.Username, props);
@@ -134,13 +139,14 @@ namespace IdentityServerAdmin.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-
-                    return Redirect("~/");
+                    //regular application users should not be allowed 
+                    if (user.IsSuperAdmin)
+                    {
+                        return Redirect("~/");
+                    }
                 }
 
-
-
-                ModelState.AddModelError("", AccountOptions.InvalidCredentialsErrorMessage);
+                ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
             // something went wrong, show form with error

@@ -97,6 +97,20 @@ namespace IdentityServerAdmin.Configuration
                 superAdmin
             };
         }
+        public static IEnumerable<RoleDto> GetRoles()
+        {
+            var applicationUserRole = new RoleDto() { Name = "ApplicationUser" };
+
+            var applicationAdminRole = new RoleDto() { Name = "ApplicationAdmin" };
+
+
+            // client credentials client
+            return new List<RoleDto>
+            {
+                applicationAdminRole,
+                applicationUserRole
+            };
+        }
         public static List<TestUser> GetIdentityServerUsers()
         {
             return new List<TestUser>

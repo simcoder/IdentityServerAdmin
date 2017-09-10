@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServerAdmin.Dtos;
+using IdentityServerAdmin.Dtos.Enums;
 
 namespace IdentityServerAdmin.Interfaces
 {
@@ -15,6 +16,7 @@ namespace IdentityServerAdmin.Interfaces
 
         Task<bool> ValidateUsernameAndPassword(string modelUsername, string modelPassword);
 
-        Task<bool> CreateUserAsync(UserDto user);
+        Task<bool> CreateUserAsync(CreateUserDto user);
+
     }
 }

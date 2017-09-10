@@ -11,6 +11,8 @@ namespace IdentityServerAdmin.Dtos
 
         public string Password { get; set; }
 
+        public bool IsSuperAdmin { get; set; }
+
         public IList<Claim> Claims { get; set; }
 
         public bool LockoutEnabled { get; set; }
