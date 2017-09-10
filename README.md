@@ -12,17 +12,20 @@
 the scope of this is to help put up a solid UI Admin tool for IdentityServer4
 
 ## whats already done?
- default superadmin user creation out of the box 
- Basic Authentication and Authorization 
- Template for the Admin tool
+1) Persistent Storage for users
+s) Persistent Storage for clients
+3) Persistent Storage for resources
+4)default superadmin user creation out of the box 
+5)Basic Authentication and Authorization 
+6)Template for the Admin tool
 
 ## Whats needed?
- UI for User Management Page
- UI for Clients Management Page
- Service for User Management Page
- Service for Client Management Page
- Unit Tests for everything
- More to come
+ 1)UI for User Management Page
+ 2)UI for Clients Management Page
+ 3)Service for User Management Page
+ 4)Service for Client Management Page
+ 5)Unit Tests for everything
+ 6)More to come
 
 ## If you are contributing please follow the following instructions
 1) clone project
