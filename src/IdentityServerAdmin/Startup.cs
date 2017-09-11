@@ -11,6 +11,7 @@ using IdentityServer4.Validation;
 using IdentityServerAdmin.Configuration;
 using IdentityServerAdmin.Data;
 using IdentityServerAdmin.Dtos;
+using IdentityServerAdmin.Handlers;
 using IdentityServerAdmin.Interfaces;
 using IdentityServerAdmin.Models;
 using IdentityServerAdmin.Services;
@@ -91,11 +92,17 @@ namespace IdentityServerAdmin
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IClientService, ClientService>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("SuperAdminOnly",
+                    policy => policy.Requirements.Add(new SuperAdminOnly()));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
+            
             InitializeDatabase(app, userManager,roleManager);
             InitializeContainer(app, userManager);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

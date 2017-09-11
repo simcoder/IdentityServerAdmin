@@ -43,7 +43,7 @@ namespace IdentityServerAdmin.Controllers
         }
 
         /// <summary>
-        /// Show login page
+        /// Register
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> Register(string returnUrl)
@@ -53,7 +53,7 @@ namespace IdentityServerAdmin.Controllers
         }
 
         /// <summary>
-        /// Show login page
+        /// Regster
         /// </summary>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
@@ -139,11 +139,16 @@ namespace IdentityServerAdmin.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-                    //regular application users should not be allowed 
-                    if (user.IsSuperAdmin)
+                    //regular application users should not be allowed to admin tool
+                    if (user.IsSuperAdmin )
                     {
+                        if (model.ReturnUrl != null && Url.IsLocalUrl(model.ReturnUrl))
+                        {
+                            return Redirect(model.ReturnUrl);
+                        }
                         return Redirect("~/");
                     }
+                    
                 }
 
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);

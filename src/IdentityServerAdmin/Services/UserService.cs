@@ -3,10 +3,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServerAdmin.Dtos;
-using IdentityServerAdmin.Dtos.Enums;
 using IdentityServerAdmin.Interfaces;
 using IdentityServerAdmin.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServerAdmin.Services
 {
@@ -29,20 +29,15 @@ namespace IdentityServerAdmin.Services
         {
             var userEntity = await _userManager.FindByNameAsync(username);
 
-            var mappedUser = new UserDto
-            {
-                SubjectId = userEntity.Id,
-                Username = userEntity.UserName,
-                Password = userEntity.PasswordHash,
-                LockoutEnabled = userEntity.LockoutEnabled,
-                LockoutEnd = userEntity.LockoutEnd,
-                IsSuperAdmin = userEntity.IsSuperAdmin
-            };
-
-            return mappedUser;
+            return MapUser(userEntity);
         }
 
-       
+        public async Task<UserDto> FindUserByIdAsync(string id)
+        {
+            var userEntity = await _userManager.FindByIdAsync(id);
+
+            return MapUser(userEntity);
+        }
 
         public async Task<bool> CheckPasswordAsync(UserDto user, string password)
         {
@@ -51,10 +46,9 @@ namespace IdentityServerAdmin.Services
             return await _userManager.CheckPasswordAsync(userEntity, password);
         }
 
-
         public async Task<bool> CreateUserAsync(CreateUserDto user)
         {
-            IdentityResult addUserResult =
+            var addUserResult =
                 await _userManager.CreateAsync(
                     new ApplicationUser
                     {
@@ -84,6 +78,39 @@ namespace IdentityServerAdmin.Services
             return false;
         }
 
+        public async Task<bool> EditUserAsync(string id, EditUserDto editUserDto)
+        {
+            var userEntity = await _userManager.FindByIdAsync(id);
+            userEntity.FirstName = editUserDto.FirstName;
+            userEntity.LastName = editUserDto.LastName;
+            userEntity.Email = editUserDto.Email;
+            userEntity.UserName = editUserDto.Username;
+            var result = await _userManager.UpdateAsync(userEntity);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> ResetPasswordAsync(string modelUsername, string newPassword)
+        {
+            var user = await _userManager.FindByNameAsync(modelUsername);
+            var result = await _userManager.ResetPasswordAsync(user, user.PasswordHash,newPassword);
+            return result.Succeeded;
+        }
+
+        public async Task<List<UserDto>> GetUsersAsync()
+        {
+            var users = await _userManager.Users.Where(x => !x.IsSuperAdmin).ToListAsync();
+            var mappedUsers = new List<UserDto>();
+            foreach (var user in users)
+                mappedUsers.Add(new UserDto
+                {
+                    Username = user.UserName,
+                    SubjectId = user.Id,
+                    HasTemporaryPassword = user.IsTempPassword,
+                    Name = $"{user.FirstName} {user.LastName}"
+                });
+            return mappedUsers;
+        }
+
         public async Task<List<Claim>> GetClaimsAsync(UserDto user)
         {
             var users = await _userManager.FindByNameAsync(user.Username);
@@ -98,6 +125,22 @@ namespace IdentityServerAdmin.Services
             var user = await FindByUsernameAsync(modelUsername);
 
             return await CheckPasswordAsync(user, modelPassword);
+        }
+
+        private UserDto MapUser(ApplicationUser userEntity)
+        {
+            return new UserDto
+            {
+                SubjectId = userEntity.Id,
+                Username = userEntity.UserName,
+                Password = userEntity.PasswordHash,
+                LockoutEnabled = userEntity.LockoutEnabled,
+                LockoutEnd = userEntity.LockoutEnd,
+                IsSuperAdmin = userEntity.IsSuperAdmin,
+                FirstName = userEntity.FirstName,
+                Email = userEntity.Email,
+                LastName = userEntity.LastName
+            };
         }
     }
 }
