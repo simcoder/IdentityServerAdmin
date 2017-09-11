@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServerAdmin.Models.ConsentViewModels;

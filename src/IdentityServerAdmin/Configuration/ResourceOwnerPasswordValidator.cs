@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using IdentityServerAdmin.Interfaces;
 
@@ -16,9 +19,24 @@ namespace IdentityServerAdmin.Configuration
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             var user = await _userManager.FindByUsernameAsync(context.UserName);
-            //validate resource owner is who he say he is
-            await _userManager.CheckPasswordAsync(user, context.Password);
-           
+            if (user != null && !user.IsSuperAdmin)
+            {
+                var isValidPassword = await _userManager.CheckPasswordAsync(user, context.Password);
+                if (isValidPassword)
+                {
+                    IEnumerable<Claim> cs = await _userManager.GetClaimsAsync(user);
+                    context.Result = new GrantValidationResult(
+                        subject: user.SubjectId,
+                        authenticationMethod: "customResourceOwnerValidation",
+                        claims: cs);
+                }
+            }
+            else
+            {
+                context.Result = new GrantValidationResult(
+                    TokenRequestErrors.InvalidGrant,
+                    "invalid custom credential");
+            }
         }
     }
 

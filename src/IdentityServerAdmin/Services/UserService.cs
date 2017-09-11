@@ -28,15 +28,14 @@ namespace IdentityServerAdmin.Services
         public async Task<UserDto> FindByUsernameAsync(string username)
         {
             var userEntity = await _userManager.FindByNameAsync(username);
-
-            return MapUser(userEntity);
+            return userEntity != null ? MapUser(userEntity) : null;
         }
 
         public async Task<UserDto> FindUserByIdAsync(string id)
         {
             var userEntity = await _userManager.FindByIdAsync(id);
 
-            return MapUser(userEntity);
+            return userEntity != null ? MapUser(userEntity) : null;
         }
 
         public async Task<bool> CheckPasswordAsync(UserDto user, string password)
