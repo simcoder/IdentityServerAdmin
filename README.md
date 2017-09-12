@@ -27,7 +27,9 @@ The scope of this is to help put up a solid UI Admin tool for IdentityServer4
 6) More to come
 
 ## If you are contributing, please follow the following instructions
-1) Clone project
-2) Create branch
-3) Name your branch with a meninful name for example UserManagementPageWorkUI or UserManagementPageServices
-4) Create pull request
+1) Join team board at https://trello.com/invite/b/Jd93TpGF/4070fdf75c1b429b1b0cf7abda1c3b6e/identity-server-admin-team.
+2) pick up a card 
+3) Clone project
+4) Create branch
+5) Name your branch with same name of trello card.
+5) Create pull request
