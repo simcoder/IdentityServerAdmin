@@ -33,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\ConsentViewModels\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Models\ConsentViewModels\" />
     <Folder Include="Models\HomeViewModels\" />
     <Folder Include="Views\Consent\" />
