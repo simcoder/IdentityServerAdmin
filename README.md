@@ -19,12 +19,7 @@ The scope of this is to help put up a solid UI Admin tool for IdentityServer4
 6) Template for the Admin tool
 
 ## What's needed?
-1) UI for User Management Page
-2) UI for Clients Management Page
-3) Service for User Management Page
-4) Service for Client Management Page
-5) Unit Tests for everything
-6) More to come
+1)Visit  https://trello.com/invite/b/Jd93TpGF/4070fdf75c1b429b1b0cf7abda1c3b6e/identity-server-admin-team to see what's needed.
 
 ## If you are contributing, please follow the following instructions
 1) Join team board at https://trello.com/invite/b/Jd93TpGF/4070fdf75c1b429b1b0cf7abda1c3b6e/identity-server-admin-team.
