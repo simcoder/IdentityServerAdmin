@@ -1,0 +1,77 @@
+@model IdentityServerAdmin.Dtos.ClientDto
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-top: 60px; width: 90%">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Edit Client</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <form asp-action="EditClient">
+            <div class="form-horizontal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Uri" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Uri" class="form-control" />
+                        <span asp-validation-for="Uri" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input asp-for="RequireConsent" />
+                            <label asp-for="RequireConsent"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input asp-for="AllowOfflineAccess" />
+                            <label asp-for="AllowOfflineAccess"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input asp-for="IsEnabled" />
+                            <label asp-for="IsEnabled"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProtocolType" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="ProtocolType" class="form-control" />
+                        <span asp-validation-for="ProtocolType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessTokenLifetime" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="AccessTokenLifetime" class="form-control" />
+                        <span asp-validation-for="AccessTokenLifetime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Clients</a>
+    </div>
+</div>
+
+
+

@@ -6,10 +6,11 @@ namespace IdentityServerAdmin.Interfaces
 {
     public interface IClientService
     {
-        Task<IList<ClientDto>> GetClients();
+        Task<IList<ClientDto>> GetClientsAsync();
 
-        Task<ClientDto> GetClientById(int id);
+        Task<ClientDto> GetClientByIdAsync(int id);
 
-        Task<ClientDto> CreateClient(ClientCreateDto client);
+        Task<bool> CreateClientAsync(ClientCreateDto client);
+        Task<bool> EditClient(string id, EditUserDto user);
     }
 }

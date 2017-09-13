@@ -1,7 +1,11 @@
 @model System.Collections.Generic.IList<IdentityServerAdmin.Dtos.UserDto>
 <div>
     <h1>Users</h1>
-  
+    <div class="row">
+        <a asp-action="CreateUser" class="btn btn-primary" style="margin-left: 15px; margin-bottom: 15px;">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </div>
     <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
     <div class="table-responsive-vertical shadow-z-1">
         <!-- Table starts here -->
@@ -11,7 +15,7 @@
             <tr>
                 <th>Name</th>
                 <th>Username</th>
-                <th>Commands</th>
+                <th style="width: 10%">Commands</th>
             </tr>
             </thead>
             <tbody>
@@ -22,9 +26,6 @@
                     <td>@item.Username</td>
                     <td>
                         <a asp-action="EditUser" asp-route-username="@item.Username" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                        <a asp-action="CreateUser"  class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
-
                         </a>
                     </td>
                 </tr>

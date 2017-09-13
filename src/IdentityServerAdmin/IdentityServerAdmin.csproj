@@ -5,6 +5,9 @@
     <UserSecretsId>aspnet-IdentityServerHost-15DE2D46-925B-406F-9CF8-181F62B562A9</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Views\User\EditUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.5.357" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -37,5 +40,6 @@
     <Folder Include="Models\HomeViewModels\" />
     <Folder Include="Views\Consent\" />
     <Folder Include="Views\Grant\" />
+    <Folder Include="Views\Client\" />
   </ItemGroup>
 </Project>

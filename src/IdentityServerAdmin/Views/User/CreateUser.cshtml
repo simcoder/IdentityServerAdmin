@@ -1,0 +1,67 @@
+@model IdentityServerAdmin.Dtos.CreateUserDto
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-top: 60px; width: 90%">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Create User</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <form asp-action="CreateUser">
+            <div class="form-horizontal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Username" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DomainOwner" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="DomainOwner" class="form-control" />
+                        <span asp-validation-for="DomainOwner" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Users</a>
+    </div>
+</div>
+
+
+

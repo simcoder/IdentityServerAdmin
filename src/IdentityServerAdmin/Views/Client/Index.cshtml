@@ -1,0 +1,42 @@
+@model IList<IdentityServerAdmin.Dtos.ClientDto>
+    <div>
+        <h1>Clients</h1>
+        <div class="row">
+            <a asp-action="CreateClient" class="btn btn-primary" style="margin-left: 15px; margin-bottom: 15px;">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="table-responsive-vertical shadow-z-1">
+            <table id="table" class="table">
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Client Id</th>
+                        <th>Url</th>
+                        <th>Is Enabled?</th>
+                        <th>Protocol Type</th>
+                        <th style="width: 10%">Commands</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+            {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.ClientId</td>
+                            <td>@item.Uri</td>
+                            <td>@item.IsEnabled</td>
+                            <td>@item.ProtocolType</td>
+                            <td>
+                                <a asp-action="EditClient" asp-route-id="@item.Id" class="btn btn-primary">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

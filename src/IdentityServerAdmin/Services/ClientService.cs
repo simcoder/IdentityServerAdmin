@@ -21,7 +21,7 @@ namespace IdentityServerAdmin.Services
             _context = context;
         }
 
-        public async Task<IList<ClientDto>> GetClients()
+        public async Task<IList<ClientDto>> GetClientsAsync()
         {
             using (_context)
             {
@@ -33,7 +33,7 @@ namespace IdentityServerAdmin.Services
             }
         }
 
-        public async Task<ClientDto> GetClientById(int id)
+        public async Task<ClientDto> GetClientByIdAsync(int id)
         {
             using (_context)
             {
@@ -43,7 +43,7 @@ namespace IdentityServerAdmin.Services
             }
         }
 
-        public async Task<ClientDto> CreateClient(ClientCreateDto client)
+        public async Task<bool> CreateClientAsync(ClientCreateDto client)
         {
             using (_context)
             {
@@ -107,27 +107,44 @@ namespace IdentityServerAdmin.Services
                 }
                 await _context.Clients.AddAsync(clientToCreate);
                 await _context.SaveChangesAsync();
-                return MapClientEntityToDto(clientToCreate);
+                return true;
             }
+        }
+
+        public Task<bool> EditClient(string id, EditUserDto user)
+        {
+            throw new NotImplementedException();
         }
 
         private static ClientDto MapClientEntityToDto(Client client)
         {
-            return new ClientDto
+            var result = new ClientDto
             {
-                Id = client.ClientId,
-                Name = client.ClientName,
-                Uri = client.ClientUri,
+                Id = client.Id,
+                ClientId = client.ClientId,
+                Name = client.ClientName ?? "No Name Assigned",
+                Uri = client.ClientUri ?? "No Url Assigned",
                 RequireConsent = client.RequireConsent,
-                ClientSecret = new ClientSecretDto
+                AllowOfflineAccess = client.AllowOfflineAccess,
+                IsEnabled = client.Enabled,
+                ProtocolType = client.ProtocolType ?? "No Protocol Assigned",
+                AccessTokenLifetime = client.AccessTokenLifetime.ToString()
+                
+            };
+            if (client.ClientSecrets != null)
+            {
+                result.ClientSecret = new ClientSecretDto
                 {
                     Value = client.ClientSecrets.First().Value,
                     ExpirationDate = client.ClientSecrets.First().Expiration
-                },
-                AllowOfflineAccess = client.AllowOfflineAccess,
-                AllowedGrantTypes = client.AllowedGrantTypes.Select(clientGrantType => clientGrantType.GrantType)
-                    .ToList()
-            };
+                };
+            }
+            if (client.AllowedGrantTypes != null)
+            {
+                result.AllowedGrantTypes = client.AllowedGrantTypes.Select(clientGrantType => clientGrantType.GrantType)
+                    .ToList();
+            }
+            return result;
         }
     }
 }
