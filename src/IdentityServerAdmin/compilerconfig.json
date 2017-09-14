@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/mdc.css",
+    "inputFile": "wwwroot/css/mdc.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/material-components-web.css",
+    "inputFile": "wwwroot/css/material-components-web.scss"
+  }
+]
