@@ -1,38 +1,41 @@
-@model IList<IdentityServerAdmin.Dtos.ClientDto>
+@using System.Collections.Generic
+@model System.Collections.Generic.IList<IdentityServerAdmin.Dtos.ClientDto>
     <div>
-        <h1>Clients</h1>
+        <h1 class="mdl-typography--display-1 text-muted">Clients</h1>
         <div class="row">
-            <a asp-action="CreateClient" class="btn btn-primary" style="margin-left: 15px; margin-bottom: 15px;">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+            <a asp-action="CreateClient" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin-left: 15px; margin-bottom: 15px;">
+                
+                <i class="material-icons">add</i>            
             </a>
         </div>
         <div class="table-responsive-vertical shadow-z-1">
-            <table id="table" class="table">
+            <table  class="mdl-data-table mdl-js-data-table" style="width: 100%">
 
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Client Id</th>
-                        <th>Url</th>
-                        <th>Is Enabled?</th>
-                        <th>Protocol Type</th>
-                        <th style="width: 10%">Commands</th>
+                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Client Id</th>
+                        <th class="mdl-data-table__cell--non-numeric">Url</th>
+                        <th class="mdl-data-table__cell--non-numeric">Is Enabled?</th>
+                        <th class="mdl-data-table__cell--non-numeric">Protocol Type</th>
+                        <th class="mdl-data-table__cell--non-numeric" style="width: 10%">Commands</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
             {
                         <tr>
-                            <td>@item.Name</td>
-                            <td>@item.ClientId</td>
-                            <td>@item.Uri</td>
-                            <td>@item.IsEnabled</td>
-                            <td>@item.ProtocolType</td>
-                            <td>
-                                <a asp-action="EditClient" asp-route-id="@item.Id" class="btn btn-primary">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <td class="mdl-data-table__cell--non-numeric">@item.Name</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.ClientId</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.Uri</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.IsEnabled</td>
+                            <td class="mdl-data-table__cell--non-numeric">@item.ProtocolType</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <a asp-action="EditClient" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                    <i class="material-icons">edit</i>
                                 </a>
-                                
+                               
+
                             </td>
                         </tr>
                     }

@@ -4,16 +4,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <environment names="Development">
-        <link href="~/lib/fontawesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/material-design-lite/material.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
-        <link href="~/lib/fontawesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="~/lib/material-design-lite/material.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+
     </environment>
 </head>
 <body>
@@ -24,6 +25,7 @@
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/material-design-lite/material.js"></script>
 </environment>
 <environment names="Staging,Production">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

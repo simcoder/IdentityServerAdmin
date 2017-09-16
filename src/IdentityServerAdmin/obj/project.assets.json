@@ -11316,11 +11316,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\robinson\\source\\repos\\SSO\\src\\IdentityServerAdmin\\IdentityServerAdmin.csproj",
+      "projectUniqueName": "C:\\Users\\robinson\\source\\repos\\IdentityServerAdmin\\src\\IdentityServerAdmin\\IdentityServerAdmin.csproj",
       "projectName": "IdentityServerAdmin",
-      "projectPath": "C:\\Users\\robinson\\source\\repos\\SSO\\src\\IdentityServerAdmin\\IdentityServerAdmin.csproj",
+      "projectPath": "C:\\Users\\robinson\\source\\repos\\IdentityServerAdmin\\src\\IdentityServerAdmin\\IdentityServerAdmin.csproj",
       "packagesPath": "C:\\Users\\robinson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robinson\\source\\repos\\SSO\\src\\IdentityServerAdmin\\obj\\",
+      "outputPath": "C:\\Users\\robinson\\source\\repos\\IdentityServerAdmin\\src\\IdentityServerAdmin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\robinson\\AppData\\Roaming\\NuGet\\NuGet.Config",

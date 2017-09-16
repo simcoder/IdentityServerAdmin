@@ -22,3 +22,15 @@ C:\Users\robinson\source\repos\SSO\src\IdentityServerAdmin\obj\Debug\netcoreapp1
 C:\Users\robinson\source\repos\SSO\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.dll
 C:\Users\robinson\source\repos\SSO\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.pdb
 C:\Users\robinson\source\repos\SSO\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.csprojResolveAssemblyReference.cache
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\bin\Debug\netcoreapp1.1\IdentityServerAdmin.deps.json
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\bin\Debug\netcoreapp1.1\IdentityServerAdmin.runtimeconfig.json
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\bin\Debug\netcoreapp1.1\IdentityServerAdmin.runtimeconfig.dev.json
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\bin\Debug\netcoreapp1.1\IdentityServerAdmin.dll
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\bin\Debug\netcoreapp1.1\IdentityServerAdmin.pdb
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.csprojResolveAssemblyReference.cache
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.csproj.CoreCompileInputs.cache
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.AssemblyInfoInputs.cache
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.AssemblyInfo.cs
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.dll
+C:\Users\robinson\source\repos\IdentityServerAdmin\src\IdentityServerAdmin\obj\Debug\netcoreapp1.1\IdentityServerAdmin.pdb
