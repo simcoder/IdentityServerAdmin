@@ -1,69 +1,76 @@
 @model IdentityServerAdmin.Dtos.ClientCreateDto
-<h1>Create Client</h1>
-@*<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-top: 60px; width: 90%">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Create Client</h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        <form asp-action="CreateClient">
-            <div class="form-horizontal">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="ClientId" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="ClientId" class="form-control" />
-                        <span asp-validation-for="ClientId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ClientName" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="ClientName" class="form-control" />
-                        <span asp-validation-for="ClientName" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AllowGrantTypes" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="AllowGrantTypes" class="form-control" />
-                        <span asp-validation-for="AllowGrantTypes" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ClientUri" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="ClientUri" class="form-control" />
-                        <span asp-validation-for="ClientUri" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="RequireConsent" />
-                            <label asp-for="RequireConsent"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="AllowOfflineAccess" />
-                            <label asp-for="AllowOfflineAccess"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </div>
-            </div>
-        </form>
 
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 90%;">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text text-muted">Create Client</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <form asp-action="CreateClient">
+                <div class="form-horizontal">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ClientId" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ClientId" class="form-control" />
+                            <span asp-validation-for="ClientId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientName" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ClientName" class="form-control" />
+                            <span asp-validation-for="ClientName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AllowGrantTypes" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="AllowGrantTypes" class="form-control" />
+                            <span asp-validation-for="AllowGrantTypes" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientUri" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ClientUri" class="form-control" />
+                            <span asp-validation-for="ClientUri" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label asp-for="RequireConsent" class="mdl-checkbox mdl-js-checkbox text-muted">
+                                <input asp-for="RequireConsent" type="checkbox" class="mdl-checkbox__input text-muted">
+                                <span class="mdl-checkbox__label">Require Consent?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label asp-for="AllowOfflineAccess" class="mdl-checkbox mdl-js-checkbox text-muted">
+                                <input asp-for="AllowOfflineAccess" type="checkbox"  class="mdl-checkbox__input text-muted">
+                                <span class="mdl-checkbox__label">Allow Offline Access?</span>
+                            </label>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a asp-action="Index" asp-controller="Client" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">backspace</i>
+                Back to Clients
+            </a>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+                Save
+            </button>
+        </div>
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+            </button>
+        </div>
     </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Clients</a>
-    </div>
-</div>*@
+
 
 

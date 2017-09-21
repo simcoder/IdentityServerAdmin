@@ -8,7 +8,7 @@ namespace IdentityServerAdmin.Models.AccountViewModels
         public static bool AllowRememberLogin = true;
         public static TimeSpan RememberMeLoginDuration = TimeSpan.FromDays(30);
 
-        public static bool ShowLogoutPrompt = true;
+        public static bool ShowLogoutPrompt = false;
         public static bool AutomaticRedirectAfterSignOut = false;
 
         public static bool WindowsAuthenticationEnabled = false;

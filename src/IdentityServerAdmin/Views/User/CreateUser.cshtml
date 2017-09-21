@@ -1,6 +1,6 @@
 @model IdentityServerAdmin.Dtos.CreateUserDto
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-top: 60px; width: 90%">
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 90%">
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Create User</h2>
     </div>
@@ -50,16 +50,14 @@
                         <span asp-validation-for="DomainOwner" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
         </form>
     </div>
     <div class="mdl-card__actions mdl-card--border">
         <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Users</a>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+            Save
+        </button>
     </div>
 </div>
 

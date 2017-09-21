@@ -10,7 +10,7 @@
     <h1 class="mdl-typography--display-1 text-muted">Users</h1>
     <div class="row">
         <div class="ml15 mb15">
-            <a asp-action="CreateClient" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+            <a asp-action="CreateUser" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">add</i>
             </a>
         </div>
@@ -33,7 +33,7 @@
                 <td class="mdl-data-table__cell--non-numeric">@item.Name</td>
                 <td class="mdl-data-table__cell--non-numeric">@item.Username</td>
                 <td class="mdl-data-table__cell--non-numeric" style="width: 10%">
-                    <a asp-action="EditUser" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                    <a asp-action="EditUser" asp-route-username="@item.Username" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                         <i class="material-icons">edit</i>
                     </a>
                 </td>

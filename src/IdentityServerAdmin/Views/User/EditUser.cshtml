@@ -1,94 +1,88 @@
 @model IdentityServerAdmin.Dtos.UserDto
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-top: 60px; width: 90%">
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style= "width: 90%">
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Edit User</h2>
     </div>
     <div class="mdl-card__supporting-text">
         <div class="row">
-            <div class="col-md-6">
-                <form asp-action="EditUser">
-                    <div class="form-horizontal">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Username" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="Username" class="form-control"/>
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="FirstName" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="FirstName" class="form-control"/>
-                                <span asp-validation-for="FirstName" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="LastName" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="LastName" class="form-control"/>
-                                <span asp-validation-for="LastName" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="Email" class="form-control"/>
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    <input asp-for="HasTemporaryPassword"/>
-                                    <label asp-for="HasTemporaryPassword"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    <input asp-for="IsSuperAdmin"/>
-                                    <label asp-for="IsSuperAdmin"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    <input asp-for="LockoutEnabled"/>
-                                    <label asp-for="LockoutEnabled"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="LockoutEnd" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="LockoutEnd" class="form-control"/>
-                                <span asp-validation-for="LockoutEnd" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-primary"/>
-                            </div>
+            <form asp-action="EditUser">
+                <div class="form-horizontal">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Username" class="form-control"/>
+                            <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="FirstName" class="form-control"/>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="LastName" class="form-control"/>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Email" class="form-control"/>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label asp-for="HasTemporaryPassword" class="mdl-checkbox mdl-js-checkbox text-muted">
+                                <input asp-for="HasTemporaryPassword" type="checkbox" class="mdl-checkbox__input text-muted">
+                                <span class="mdl-checkbox__label">Has Temporary Password?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label asp-for="LockoutEnabled" class="mdl-checkbox mdl-js-checkbox text-muted">
+                                <input asp-for="LockoutEnabled" type="checkbox" class="mdl-checkbox__input text-muted">
+                                <span class="mdl-checkbox__label">Has Temporary Password?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LockoutEnd" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="LockoutEnd" class="form-control"/>
+                            <span asp-validation-for="LockoutEnd" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button class="btn btn-danger">Reset Password</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-            </div>
-            <div class="col-md-6">
-                <center style="margin-top: 36%">
-                    <button class="btn btn-danger">Reset Password</button>
-                </center>
-            </div>
         </div>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-        <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Users</a>
+        <a asp-action="Index" asp-controller="User" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">backspace</i>
+            Back to Users
+        </a>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+            Save
+        </button>
     </div>
+    
 </div>
+
+
+
 
 

@@ -43,12 +43,12 @@ namespace IdentityServerAdmin.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateUser(string id)
+        public IActionResult CreateUser()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUser(string id, CreateUserDto user)
+        public async Task<IActionResult> CreateUser(CreateUserDto user)
         {
             if (ModelState.IsValid)
             {

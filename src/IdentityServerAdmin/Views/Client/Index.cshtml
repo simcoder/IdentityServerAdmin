@@ -31,7 +31,7 @@
                             <td class="mdl-data-table__cell--non-numeric">@item.IsEnabled</td>
                             <td class="mdl-data-table__cell--non-numeric">@item.ProtocolType</td>
                             <td class="mdl-data-table__cell--non-numeric">
-                                <a asp-action="EditClient" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                <a asp-action="EditClient" asp-route-id="@item.Id" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                     <i class="material-icons">edit</i>
                                 </a>
                                

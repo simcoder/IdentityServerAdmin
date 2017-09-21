@@ -201,9 +201,13 @@ namespace IdentityServerAdmin.Controllers
                 }
             }
 
-            // delete local authentication cookie
+            //TODO add admin role to all admins and check role instead
+            if (User.Identity.Name == "superadmin")
+            {
+                await HttpContext.Authentication.SignOutAsync();
+                return RedirectToAction("Login");
+            }
             await HttpContext.Authentication.SignOutAsync();
-
             return View("LoggedOut", vm);
         }
 

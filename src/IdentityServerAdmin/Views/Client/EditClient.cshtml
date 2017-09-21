@@ -24,28 +24,30 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="RequireConsent" />
-                            <label asp-for="RequireConsent"></label>
-                        </div>
+                        <label asp-for="IsEnabled" class="mdl-checkbox mdl-js-checkbox text-muted">
+                            <input asp-for="IsEnabled" type="checkbox" class="mdl-checkbox__input text-muted">
+                            <span class="mdl-checkbox__label">Is Enabled?</span>
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="AllowOfflineAccess" />
-                            <label asp-for="AllowOfflineAccess"></label>
-                        </div>
+                        <label asp-for="RequireConsent" class="mdl-checkbox mdl-js-checkbox text-muted">
+                            <input asp-for="RequireConsent" type="checkbox" class="mdl-checkbox__input text-muted">
+                            <span class="mdl-checkbox__label">Require Consent?</span>
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="IsEnabled" />
-                            <label asp-for="IsEnabled"></label>
-                        </div>
+                        <label asp-for="AllowOfflineAccess" class="mdl-checkbox mdl-js-checkbox text-muted">
+                            <input asp-for="AllowOfflineAccess" type="checkbox" class="mdl-checkbox__input text-muted">
+                            <span class="mdl-checkbox__label">Allow Offline Access?</span>
+                        </label>
                     </div>
+
                 </div>
+                
                 <div class="form-group">
                     <label asp-for="ProtocolType" class="col-md-2 control-label"></label>
                     <div class="col-md-10">
@@ -60,16 +62,17 @@
                         <span asp-validation-for="AccessTokenLifetime" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                    </div>
-                </div>
             </div>
         </form>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-        <a asp-action="Index" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to Clients</a>
+        <a asp-action="Index" asp-controller="Client" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">backspace</i>
+            Back to Clients
+        </a>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+            Save
+        </button>
     </div>
 </div>
 
